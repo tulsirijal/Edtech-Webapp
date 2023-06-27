@@ -21,6 +21,7 @@ import { apiConnector } from "./services/apiConnector";
 import { setUser } from "./slices/profileSlice";
 import AddCourse from "./components/core/Dashboard/Add course/AddCourse";
 import MyCourses from "./components/core/Dashboard/MyCourses";
+import EditCourse from "./components/core/Dashboard/Edit Course/EditCourse";
 function App() {
   const {token} = useSelector(state=>state.auth);
   const {user} = useSelector(state=>state.profile);
@@ -65,6 +66,7 @@ function App() {
           <Route path="/dashboard/settings" element={<Settings/>}/>
           <Route path="/dashboard/add-course" element={<AddCourse/>}/>
           <Route path="/dashboard/my-courses" element={<MyCourses/>}/>
+          <Route path="/dashboard/edit-course/:courseId" element={<EditCourse/>}/>
         </Route>
       </Routes>
     </div>
