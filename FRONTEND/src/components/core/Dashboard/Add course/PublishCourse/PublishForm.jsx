@@ -38,33 +38,34 @@ export default function PublishForm() {
   }
   function goToCourses(){
     dispatch(resetCourseState());
-    // navigate('/dashboard/my-courses');
+    navigate('/dashboard/my-courses');
   }
-  function onSubmit(data) {
+  function onSubmit() {
     handlePublishCourse()
   }
   function goBack() {
     dispatch(setStep(2));
   }
   return (
-    <div className="bg-richblack-800 border border-richblack-700 min-h-[200px]">
-      <div className="flex flex-col">
-        <p className="font-bold text-richblack-5">Publish</p>
+    <div className="bg-richblack-800 border border-richblack-700 min-h-[150px]">
+      <div className="flex flex-col p-4 gap-3">
+        <p className="font-bold text-2xl text-richblack-5">Publish</p>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <div className="space-x-3">
             <input
               type="checkbox"
               id="public"
               name="public"
               {...register("public", { required: true })}
+              className=''
             />
-            <label htmlFor="public" className="text-richblack-5">
+            <label htmlFor="public" className="text-richblack-5 text-lg">
               Mark this course as public
             </label>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mt-5">
             <button
-              className="text-richblack-300 bg-richblack-800"
+              className="text-richblack-300 bg-richblack-700 border px-5 py-2 rounded-md"
               type="button"
               onClick={goBack}
             >

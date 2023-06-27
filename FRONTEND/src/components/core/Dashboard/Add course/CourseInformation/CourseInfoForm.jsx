@@ -131,7 +131,7 @@ export default function CourseInfoForm() {
   }
   return (
     <form onSubmit={handleSubmit(submitCourseInfo)} className='flex flex-col gap-3'>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label className="text-richblack-5 font-bold">
             Course Title <sup className="text-pink-50">*</sup>
           </label>
@@ -141,7 +141,7 @@ export default function CourseInfoForm() {
             name="courseTitle"
             id="courseTitle"
             {...register("courseTitle", { required: true })}
-            className="h-[40px] bg-richblack-700 text-richblack-5 outline-none px-2 rounded-md"
+            className="h-[50px] bg-richblack-700 text-richblack-5 outline-none px-2 rounded-md"
           />
           {errors.courseTitle && (
             <span className="text-sm text-yellow-300">
@@ -149,7 +149,7 @@ export default function CourseInfoForm() {
             </span>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="courseShortDesc"
             className="font-semibold text-richblack-5"
@@ -169,7 +169,7 @@ export default function CourseInfoForm() {
             </span>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="coursePrice"
             className="font-semibold text-richblack-5"
@@ -185,7 +185,7 @@ export default function CourseInfoForm() {
                 required: true,
                 valueAsNumber: true,
               })}
-              className="w-full h-[40px] bg-richblack-700 text-richblack-5 outline-none px-6 rounded-md"
+              className="w-full h-[50px] bg-richblack-700 text-richblack-5 outline-none px-6 rounded-md"
             />
             <HiOutlineCurrencyPound className="text-lg text-richblack-300 absolute top-0 left-1  h-full" />
           </div>
@@ -195,7 +195,7 @@ export default function CourseInfoForm() {
             </span>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             className="font-semibold text-richblack-5"
             htmlFor="courseCategory"
@@ -207,7 +207,7 @@ export default function CourseInfoForm() {
             id="courseCategory"
             defaultValue=""
             {...register("courseCategory", { required: true })}
-            className="bg-richblack-700 text-richblack-300 px-2 h-[40px] outline-none rounded-md"
+            className="bg-richblack-700 text-richblack-300 px-2 h-[50px] outline-none rounded-md"
           >
             <option value="" disabled>
               Choose a Category
@@ -250,7 +250,7 @@ export default function CourseInfoForm() {
         setValue={setValue}
         editData={editCourse ? course.thumbnail : null}
         />
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="courseBenefits"
             className="font-semibold text-richblack-5"
@@ -280,7 +280,7 @@ export default function CourseInfoForm() {
           register={register}
           errors={errors}
         />
-        <div className="self-end flex ">
+        <div className="self-end flex gap-1">
           {editCourse && (
             <div
               onClick={() => dispatch(setStep(2))}

@@ -68,11 +68,11 @@ export default function CourseBuildForm() {
         token
       );
     }
-    console.log(response)
+    console.log(response);
     if (response) {
       dispatch(setCourse(response));
       setEditSectionName(null);
-      setValue("sectionName","");
+      setValue("sectionName", "");
     }
   }
   function handleEditSection(sectionId, sectionName) {
@@ -84,9 +84,9 @@ export default function CourseBuildForm() {
     setValue("sectionName", sectionName);
   }
   return (
-    <div>
-      <p className="text-richblack-5">Course Builder</p>
-      <form onSubmit={handleSubmit(submitSectionForm)}>
+    <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
+      <p className="text-richblack-5 text-2xl font-semibold">Course Builder</p>
+      <form onSubmit={handleSubmit(submitSectionForm)} className="space-y-4">
         <div className="flex flex-col w-full">
           <label
             htmlFor="sectionName"
@@ -108,7 +108,7 @@ export default function CourseBuildForm() {
             </span>
           )}
         </div>
-        <div className="mt-10 flex gap-4">
+        <div className="mt-5 flex  gap-4">
           <IconBtn
             text={editSectionName ? "Edit section name" : "create section"}
             type="submit"
@@ -132,7 +132,11 @@ export default function CourseBuildForm() {
         <NestedSection handleEditSection={handleEditSection} />
       )}
       <div className="flex gap-3 mt-10">
-        <button type="button" onClick={goBack} className="text-richblack-5">
+        <button
+          type="button"
+          onClick={goBack}
+          className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`"
+        >
           Back
         </button>
         <IconBtn type="button" text={"Next"} onClick={goToNext} />

@@ -55,7 +55,7 @@ export default function Sidebar() {
         </div>
       </div>
       {confirmationModal && (
-        <div className="absolute top-[40%] left-[45%] border-[1px] py-4 px-4 border-richblack-700 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-white bg-opacity-10 backdrop-blur-sm">
           <ConfirmationModal modalData={confirmationModal} />
         </div>
       )}

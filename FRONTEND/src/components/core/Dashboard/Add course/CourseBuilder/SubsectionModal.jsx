@@ -95,17 +95,17 @@ export default function SubsectionModal({
     setModalData(null);
   }
   return (
-    <div>
-      <div>
-        <div className="flex justify-between items-center mt-10">
-          <p className="text-richblack-5">
+    <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
+      <div className="my-10   max-w-[700px] w-11/12 rounded-lg border border-richblack-400 bg-richblack-800">
+        <div className="flex justify-between items-center mt-10 p-5 bg-richblack-700 rounded-t-lg">
+          <p className="text-richblack-5 text-xl font-semibold">
             {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
           </p>
           <button onClick={() => setModalData(null)}>
             <ImCross className="text-lg text-richblack-300 " />
           </button>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='px-8 py-10 space-y-4'>
           <ThumbnailUpload
             name="lectureVideo"
             label="Lecture Video"
@@ -116,31 +116,32 @@ export default function SubsectionModal({
             viewData={view ? modalData.videoUrl : null}
             editData={edit ? modalData.videoUrl : null}
           />
-          <div className="flex flex-col">
-            <label className="text-richblack-5" htmlFor="lectureTitle">Lecture Title</label>
+          <div className="flex flex-col gap-1">
+            <label className="text-richblack-5 font-medium" htmlFor="lectureTitle">Lecture Title <sup className="text-pink-50">*</sup> </label>
             <input
               type="text"
               placeholder="Title"
               id="lectureTitle"
               name="lectureTitle"
               {...register("lectureTitle", { required: true })}
+              className='bg-richblack-700 rounded-lg p-3 text-[16px] outline-none text-richblack-5'
             />
             {
-              errors.lectureTitle && <span className="text-richblack-5">Title is required</span>
+              errors.lectureTitle && <span className="text-sm text-yellow-50">Title is required</span>
             }
           </div>
-          <div className="flex flex-col">
-            <label className="text-richblack-5" htmlFor="lectureDesc">Lecture Description</label>
+          <div className="flex flex-col gap-1">
+            <label className="text-richblack-5 font-medium" htmlFor="lectureDesc">Lecture Description</label>
             <textarea
               type="text"
               placeholder="Title"
               id="lectureDesc"
               name="lectureDesc"
               {...register("lectureDesc", { required: true })}
-              className="min-h-[70px]"
+              className="min-h-[70px] bg-richblack-700 text-[16px] outline-none text-richblack-5 p-3 rounded-lg"
             />
             {
-              errors.lectureDesc && <span>Description is required</span>
+              errors.lectureDesc && <span className="text-sm text-yellow-50">Description is required</span>
             }
           </div>
         {!view &&  <IconBtn text={"save"} type='submit' />}

@@ -36,17 +36,17 @@ export default function NestedSection({ handleEditSection }) {
  }
 
   return (
-    <div className="">
-      <div className="border border-richblack-300 px-2">
+    <div className=" ">
+      <div className="border border-richblack-300 rounded-lg px-8 p-4">
         {course?.courseContent?.map((section, index) => {
           return (
-            <details key={index} open className="border-b border-richblack-5">
-              <summary className="flex items-center justify-between ">
+            <details key={index} open className="">
+              <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2 ">
                 <div className="flex gap-4 items-center ">
                   <RxDropdownMenu className="text-richblack-300" />
-                  <p className="text-white">{section.sectionName}</p>
+                  <p className="text-richblack-50 text-2xl">{section.sectionName}</p>
                 </div>
-                <div className="flex gap-1 items-center">
+                <div className="flex gap-2 items-center">
                   <button
                     onClick={() =>
                       handleEditSection(section._id, section.sectionName)
@@ -80,11 +80,11 @@ export default function NestedSection({ handleEditSection }) {
                     <div
                       key={index}
                       onClick={() => setViewSubSection(subsection)}
-                      className="flex items-center justify-between border-b0-2"
+                      className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2 "
                     >
                       <div className="flex gap-3 items-center">
                         <RxDropdownMenu className="text-richblack-300" />
-                        <p className="text-richblack-5">{subsection.title}</p>
+                        <p className="text-richblack-50 text-lg">{subsection.title}</p>
                       </div>
                       <div className="flex items-center gap-2" onClick={(e)=>e.stopPropagation()}>
                         <button
@@ -124,7 +124,7 @@ export default function NestedSection({ handleEditSection }) {
                 })}
                 <button
                   onClick={() => setAddSubSection(section._id)}
-                  className="text-yellow-50 flex gap-2 items-center  rounded-sm px-2 "
+                  className="text-yellow-50 flex gap-2 items-center  rounded-sm px-2 mt-1"
                 >
                   <AiOutlinePlus />
                   <p>Add lecture</p>
