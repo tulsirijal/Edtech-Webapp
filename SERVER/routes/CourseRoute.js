@@ -8,6 +8,7 @@ const {
   editCourse,
   getInstructorCourses,
   deleteCourse,
+  getFullCourseDetails,
 } = require("../controllers/course");
 // importing category controllers
 const {
@@ -45,6 +46,7 @@ router.post("/addSubSection", auth, isTeacher, createSubSection);
 router.post("/updateSubSection", auth, isTeacher, updateSubSection);
 router.delete("/deleteSubSection", auth, isTeacher, deleteSubsection);
 router.get("/getAllCourses", getAllCourses);
+router.post('/getFullCourseDetails',auth,getFullCourseDetails);
 router.post("/getCourseDetails", getCourseDetails);
 router.get("/getInstructorCourse",auth,isTeacher,getInstructorCourses);
 router.delete('/deleteCourse',auth,isTeacher,deleteCourse)

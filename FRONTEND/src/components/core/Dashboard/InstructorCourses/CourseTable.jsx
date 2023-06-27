@@ -81,7 +81,7 @@ export default function CourseTable({ courses, setCourses }) {
                     {course?.price}
                   </Td>
                   <Td className='text-richblack-300 '>
-                    <button onClick={()=>navigate(`dashboard/edit-course/${course._id}`)}>
+                    <button onClick={()=>navigate(`/dashboard/edit-course/${course._id}`)}>
                         <BiEdit/>
                     </button>
                     <button onClick={()=>setConfirmationModal({

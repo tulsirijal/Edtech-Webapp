@@ -129,6 +129,23 @@ export const updateSubSection = async(data,token)=>{
   return result
 }
 
+export const getFullCourseDetails = async(courseId,token)=>{
+  const toastId = toast.loading("Loading");
+  let result = null;
+  try {
+    const response = await apiConnector('POST',courseEndPoints.GET_FULL_COURSE_DETAILS,{courseId:courseId},{
+      Authorization:`Bearer ${token}`
+    });
+    console.log(response.data.data.courseDetails);
+    result = response.data.data
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return result
+}
+
 export const deleteSubSection = async(data,token)=>{
   const toastId = toast.loading('loading');
   let result = null;
