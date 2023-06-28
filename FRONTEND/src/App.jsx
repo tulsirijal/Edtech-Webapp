@@ -22,6 +22,7 @@ import { setUser } from "./slices/profileSlice";
 import AddCourse from "./components/core/Dashboard/Add course/AddCourse";
 import MyCourses from "./components/core/Dashboard/MyCourses";
 import EditCourse from "./components/core/Dashboard/Edit Course/EditCourse";
+import Catalog from "./pages/Catalog";
 function App() {
   const {token} = useSelector(state=>state.auth);
   const {user} = useSelector(state=>state.profile);
@@ -32,21 +33,23 @@ function App() {
       Authorization: `Bearer ${token}`
     })
     // console.log(response.data.userDetails)
+    
     dispatch(setUser(response.data.userDetails))
     localStorage.setItem('user',JSON.stringify(response.data.userDetails))
   } catch (error) {
     console.log(error)
+    localStorage.clear();
   }
 }
-// console.log(user)
   useEffect(()=>{
     getUserDetails()
-  },[user?.image])
+  },[])
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter ">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/catalog/:catalogName" element={<Catalog />} />
         <Route path="/login" element={<OpenRoute><Login /></OpenRoute>} />
         <Route path="/signup" element={<OpenRoute><Signup /></OpenRoute>} />
         <Route path="/forgotPassword" element={<OpenRoute><ForgotPassword /></OpenRoute>} />

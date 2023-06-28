@@ -53,7 +53,7 @@ router.delete('/deleteCourse',auth,isTeacher,deleteCourse)
 // category can only be created by admin
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
-router.get("/getCategoryPageDetails", categoryPageDetails)
+router.post("/getCategoryPageDetails", categoryPageDetails)
 
 // rating and reviews
 router.post('/createRating',auth,isStudent,createRatings);

@@ -59,7 +59,7 @@ export default function Navbar() {
 
                       {subLinks.length ? (
                         subLinks.map((subLink, index) => (
-                          <Link className="hover:bg-richblack-50 py-2 px-4 rounded-md" to={`${subLink.name}`} key={index}>
+                          <Link className="hover:bg-richblack-50 py-2 px-4 rounded-md" to={`/catalog/${subLink.name.split(" ").join("-").toLowerCase()}`} key={index}>
                             <p>{subLink.name}</p>
                           </Link>
                         ))

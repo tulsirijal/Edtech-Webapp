@@ -19,8 +19,8 @@ export default function MyCourses() {
     },[])
   return (
     <div>
-        <div className='flex justify-between'>
-            <p className='text-richblack-5 font-bold'>My Courses</p>
+        <div className='flex justify-between items-center mb-10'>
+            <p className='text-richblack-5 font-bold text-2xl'>My Courses</p>
             <IconBtn text='Add Course' onClick={()=>navigate('/dashboard/add-course')}>+</IconBtn>
         </div>
         {courses && <CourseTable courses={courses} setCourses={setCourses} />}
