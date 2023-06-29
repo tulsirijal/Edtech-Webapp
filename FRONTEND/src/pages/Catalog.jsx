@@ -4,7 +4,7 @@ import CourseCard from "../components/core/catalog/CourseCard";
 import CourseSlider from "../components/core/catalog/CourseSlider";
 import Footer from "../components/core/homePage/Footer";
 import { apiConnector } from "../services/apiConnector";
-import { categories, courseEndPoints } from "../services/apis";
+import { categories } from "../services/apis";
 import { getCatalogData } from "../services/operations/catalogData";
 
 export default function Catalog() {
@@ -39,7 +39,9 @@ export default function Catalog() {
     getAllCategories();
   }, [catalogName]);
   useEffect(() => {
-    getCategoryDetails();
+    if(categoryId){
+      getCategoryDetails();
+    }
   }, [categoryId]);
   return (
     <div className="">

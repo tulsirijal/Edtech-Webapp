@@ -9,7 +9,13 @@ export default function CourseSlider({ courses }) {
   return (
     <div>
       {courses?.length ? (
-        <Swiper>
+        <Swiper
+        slidesPerView={(1)}
+        loop={true}
+        breakpoints={{
+            1000:{slidesPerView:3}
+        }}
+        >
             {courses?.map((course, index) => {
               return (
                <SwiperSlide key={index}>

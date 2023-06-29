@@ -5,7 +5,7 @@ export default function CourseCard({ course }) {
   return (
     <Link to={`/courses/${course._id}`}>
       <div className="flex flex-col gap-1">
-        <img src={course?.thumbnail} className='h-[250px] w-full' />
+        <img src={course?.thumbnail} className='h-[250px] w-[350px]' /> 
         <p className="text-richblack-5 text-2xl">{course?.name}</p>
         <p className="text-richblack-100">
           Course created by{" "}

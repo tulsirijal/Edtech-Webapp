@@ -39,8 +39,8 @@ export default function Navbar() {
                 {navItem.title === "Catalog" ? (
                   <div className="relative flex items-center gap-2 group">
                     <div className="text-richblack-25 flex gap-[5px] items-center">
-                        <p className="text-richblack-25">{navItem.title}</p>
-                        <IoIosArrowDropdown />
+                      <p className="text-richblack-25">{navItem.title}</p>
+                      <IoIosArrowDropdown />
                     </div>
 
                     <div
@@ -59,7 +59,14 @@ export default function Navbar() {
 
                       {subLinks.length ? (
                         subLinks.map((subLink, index) => (
-                          <Link className="hover:bg-richblack-50 py-2 px-4 rounded-md" to={`/catalog/${subLink.name.split(" ").join("-").toLowerCase()}`} key={index}>
+                          <Link
+                            className="hover:bg-richblack-50 py-2 px-4 rounded-md"
+                            to={`/catalog/${subLink.name
+                              .split(" ")
+                              .join("-")
+                              .toLowerCase()}`}
+                            key={index}
+                          >
                             <p>{subLink.name}</p>
                           </Link>
                         ))
@@ -86,7 +93,7 @@ export default function Navbar() {
           })}
         </ul>
         <div className="flex items-center gap-2 text-richblack-5">
-          {user && user.accountType !== "Teacher" && token!==null && (
+          {user && user.accountType !== "Teacher" && token !== null && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart />
               {totalItem > 0 && <span>{totalItem}</span>}
@@ -108,9 +115,8 @@ export default function Navbar() {
               Signup
             </Link>
           )}
-          {token !== null && (<ProfileDropDown />)}
+          {token !== null && <ProfileDropDown />}
         </div>
-        
       </nav>
     </div>
   );
