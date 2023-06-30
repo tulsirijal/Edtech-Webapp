@@ -94,9 +94,9 @@ export default function Navbar() {
         </ul>
         <div className="flex items-center gap-2 text-richblack-5">
           {user && user.accountType !== "Teacher" && token !== null && (
-            <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart />
-              {totalItem > 0 && <span>{totalItem}</span>}
+            <Link to="/dashboard/purchase-history" className="relative ">
+              <AiOutlineShoppingCart className="text-2xl" />
+              {totalItem > 0 && <span className="absolute -right-2 top-4 text-yellow-300 bg-richblack-700 px-2 rounded-full">{totalItem}</span>}
             </Link>
           )}
           {token === null && (

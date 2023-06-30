@@ -10,11 +10,15 @@ import formatDate from "../utils/dateFormatter";
 import IconBtn from "../components/common/IconBtn";
 import Lectures from "../components/core/CourseDetails/Accordion";
 import Footer from "../components/core/homePage/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
 export default function CourseDetails() {
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState(null);
   const [noOfLectures, setNoOfLecutures] = useState(0);
   const [totalTimeOfContent,setTotalTimeOfContent] = useState(0);
+  const {user} = useSelector((state)=>state.profile);
+  const dispatch = useDispatch();
   async function fetchCoursDetails() {
     let toastId;
     try {
@@ -56,6 +60,13 @@ export default function CourseDetails() {
             setTotalTimeOfContent(totalTime);
         })
     })
+  }
+  function handleAddToCart(){
+    if(!user){
+        return toast.error("You need to be logged in ");
+    }
+    dispatch(addToCart(courseDetails));
+    toast.success("successfully added to the cart")
   }
   useEffect(() => {
     getNoOFLectures();
@@ -119,7 +130,7 @@ export default function CourseDetails() {
           </p>
           <div className="flex flex-col gap-3 ">
             <IconBtn text="Buy now" />
-            <button className="bg-richblack-700 md:bg-richblack-800 text-richblack-300 px-4 py-2 rounded-md">
+            <button onClick={handleAddToCart} className="bg-richblack-700 md:bg-richblack-800 text-richblack-300 px-4 py-2 rounded-md">
               Add to cart
             </button>
           </div>
