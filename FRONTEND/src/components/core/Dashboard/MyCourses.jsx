@@ -18,8 +18,8 @@ export default function MyCourses() {
       instructorCourses()
     },[])
   return (
-    <div>
-        <div className='flex justify-between items-center mb-10'>
+    <div className='h-[calc(100vh-3rem)]'>
+        <div className='flex justify-between items-center mb-10 mt-[90px]'>
             <p className='text-richblack-5 font-bold text-2xl'>My Courses</p>
             <IconBtn text='Add Course' onClick={()=>navigate('/dashboard/add-course')}>+</IconBtn>
         </div>

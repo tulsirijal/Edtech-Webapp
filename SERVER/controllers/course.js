@@ -6,6 +6,7 @@ const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
 const CourseProgress = require('../models/CourseProgress')
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
+const { convertSecondsToDuration } = require("../utils/secToDuration");
 exports.createCourse = async (req, res) => {
   try {
     let {
@@ -176,7 +177,7 @@ exports.getCourseDetails = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "unable to get the course details",
+      message: error.message,
     });
   }
 };

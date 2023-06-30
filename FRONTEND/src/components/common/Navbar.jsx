@@ -27,7 +27,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="border-b-[1px] border-b-richblack-700  ">
+    <div className="border-b-[1px] border-b-richblack-700 z-[1000] ">
       <nav className="w-11/12 max-w-maxContent mx-auto py-2 flex justify-between items-center">
         <Link to="/">
           <img src={CompanyLogo} className="w-[150px]" />
