@@ -12,12 +12,15 @@ import Lectures from "../components/core/CourseDetails/Accordion";
 import Footer from "../components/core/homePage/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../slices/cartSlice";
+import stripePayment from "../services/operations/payment";
 export default function CourseDetails() {
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState(null);
   const [noOfLectures, setNoOfLecutures] = useState(0);
   const [totalTimeOfContent,setTotalTimeOfContent] = useState(0);
   const {user} = useSelector((state)=>state.profile);
+  const {course} = useSelector((state)=>state.course);
+  const {token} = useSelector((state)=>state.auth)
   const dispatch = useDispatch();
   async function fetchCoursDetails() {
     let toastId;
@@ -65,8 +68,14 @@ export default function CourseDetails() {
     if(!user){
         return toast.error("You need to be logged in ");
     }
+    if(courseDetails?.studentEnrolled?.includes(user._id)){
+      toast.error("Already enrolled in the course");
+      return 
+    }
     dispatch(addToCart(courseDetails));
-    toast.success("successfully added to the cart")
+  }
+  function handleBuyNow(){
+    stripePayment([courseDetails._id],token);
   }
   useEffect(() => {
     getNoOFLectures();
@@ -129,7 +138,7 @@ export default function CourseDetails() {
             $ {courseDetails?.price}
           </p>
           <div className="flex flex-col gap-3 ">
-            <IconBtn text="Buy now" />
+            <IconBtn text="Buy now" onClick={handleBuyNow} />
             <button onClick={handleAddToCart} className="bg-richblack-700 md:bg-richblack-800 text-richblack-300 px-4 py-2 rounded-md">
               Add to cart
             </button>

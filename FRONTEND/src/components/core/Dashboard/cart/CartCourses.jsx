@@ -6,12 +6,22 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { removeFromCart } from "../../../../slices/cartSlice";
 import RatingStars from "../../../common/RatingStars";
 import IconBtn from "../../../common/IconBtn";
+import stripePayment from "../../../../services/operations/payment";
 export default function CartCourses() {
   const { cartItem, totalPrice } = useSelector((state) => state.cart);
+  const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
+  let coursesId = [];
+  for(const item of cartItem){
+    coursesId.push(item._id);
+  }
   function handleRemoveFromCart(course) {
     dispatch(removeFromCart(course));
   }
+  function handleBuyNow(){
+    stripePayment(coursesId,token)
+  }
+  console.log(coursesId);
   return (
     <div className="mt-3 flex flex-col md:flex-row justify-between  gap-5 ">
       <div className="flex flex-col gap-5 flex-1">
@@ -60,7 +70,7 @@ export default function CartCourses() {
       <div className="bg-richblack-800 w-[200px] min-h-[130px] p-5 self-start rounded-md space-y-2">
         <p className="text-richblack-300 text-sm">Total:</p>
         <p className="text-2xl text-yellow-25">${totalPrice}</p>
-        <IconBtn text="Buy now" />
+        <IconBtn text="Buy now" onClick={handleBuyNow} />
       </div>
     </div>
   );

@@ -43,3 +43,7 @@ export const courseEndPoints = {
     GET_CATALOG_DETAILS:BASE_URL + '/course/getCategoryPageDetails',
     GET_COURSE_DETAILS:BASE_URL + '/course/getCourseDetails'
 }
+
+export const paymentApiUrl = {
+    STRIPE_PAYMENT:BASE_URL + '/auth/create-payment'
+}

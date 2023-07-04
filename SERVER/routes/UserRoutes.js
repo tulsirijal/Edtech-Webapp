@@ -13,5 +13,4 @@ router.post('/changePassword',auth,changePassword);
 router.post('/reset-password-token',resetPasswordToken);
 router.post('/reset-password',resetPassword);
 router.post('/create-payment',auth,isStudent,stripePayment)
-router.post('/webhook',webhook)
 module.exports = router
