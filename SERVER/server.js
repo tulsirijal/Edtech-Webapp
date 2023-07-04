@@ -9,11 +9,13 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const dbConnect = require('./config/database');
+const { webhook } = require('./controllers/payment');
 const PORT = process.env.PORT || 4000;
 dbConnect()
-app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.post('/api/v1/auth/webhook',express.raw({type: 'application/json'}),webhook);
+app.use(express.json());
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/'

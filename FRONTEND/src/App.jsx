@@ -50,6 +50,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/success" element={<p>successfully purchased</p>}/>
         <Route path="/catalog/:catalogName" element={<Catalog />} />
         <Route path="/courses/:courseId" element={<CourseDetails />} />
         <Route path="/login" element={<OpenRoute><Login /></OpenRoute>} />
