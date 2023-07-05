@@ -190,3 +190,17 @@ export const deleteCourse = async(courseId,token)=>{
     toast.error("Unable to delete");
   }
 }
+
+export const addRatingAndReview = async(data,token)=>{
+  try {
+    const response = await apiConnector('POST',courseEndPoints.CREATE_RATINGS,data,{
+      Authorization:`Bearer ${token}`
+    })
+    if(response.data.success){
+      toast.success("Added a review");
+    }
+  } catch (error) {
+    console.log(error.message)
+    toast.error(error.response.data.message);
+  }
+}

@@ -41,7 +41,10 @@ export const courseEndPoints = {
     GET_INSTRUCTOR_COURSE:BASE_URL + '/course/getInstructorCourse',
     GET_FULL_COURSE_DETAILS:BASE_URL + '/course/getFullCourseDetails',
     GET_CATALOG_DETAILS:BASE_URL + '/course/getCategoryPageDetails',
-    GET_COURSE_DETAILS:BASE_URL + '/course/getCourseDetails'
+    GET_COURSE_DETAILS:BASE_URL + '/course/getCourseDetails',
+    CREATE_RATINGS:BASE_URL + '/course/createRating',
+    GET_AVERAGE_RATING:BASE_URL + '/course/getAverageRating',
+    GET_REVIEWS:BASE_URL + '/course/getReviews'
 }
 
 export const paymentApiUrl = {
