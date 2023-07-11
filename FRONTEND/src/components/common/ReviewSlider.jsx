@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getAllReviews } from "../../services/operations/courseDetailsApi";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import ReactStars from "react-stars";
-import RatingStars from "./RatingStars";
+import ReactStars from "react-rating-stars-component"
 export default function ReviewSlider() {
   const [reviews, setReviews] = useState([]);
   async function getRatingAndReviews() {
@@ -63,7 +62,7 @@ export default function ReviewSlider() {
                   <p className="text-sm mt-1">{review?.reviews}</p>
                   <div className="flex items-center gap-2">
                     <span className="text-yellow-5">{review.rating}</span>
-                    <RatingStars Review_Count={review.rating} Star_Size={25} />
+                    <ReactStars value={review.rating} edit={false} />
                   </div>
                 </div>
               </SwiperSlide>

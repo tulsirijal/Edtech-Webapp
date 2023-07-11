@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
-import ReactStars from "react-stars";
+import ReactStars from "react-rating-stars-component"
 import IconBtn from "../../../common/IconBtn";
 import { addRatingAndReview } from "../../../../services/operations/courseDetailsApi";
 export default function ReviewModal({ setReviewModal }) {
