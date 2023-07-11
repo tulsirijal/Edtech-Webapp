@@ -26,8 +26,8 @@ import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import { ACCOUNT_TYPE } from "./utils/constants";
-import VideoSidebar from "./components/core/Dashboard/ViewCourse/VIdeoSidebar";
 import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
+import ErrorPage from "./pages/Error";
 function App() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -138,6 +138,7 @@ function App() {
             />
           )}
         </Route>
+        <Route path="*" element={<ErrorPage/>}/>
       </Routes>
     </div>
   );
