@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { BigPlayButton, Player } from "video-react";
 import "video-react/dist/video-react.css";
 import IconBtn from "../../../common/IconBtn";
+import ReactPlayer from 'react-player'
 export default function VideoDetails() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -132,16 +133,9 @@ export default function VideoDetails() {
     <div className="flex flex-col text-white gap-5">
       {!videoData ? (
         <img src={previewSource} />
-      ) : (
-        <Player
-          
-          ref={videoPlayerRef}
-          onEnded={() => setVideoEnded(true)}
-          src={videoData?.videoUrl}
-        >
-          <BigPlayButton position="center" />
-          {/* Render When Video Ends */}
-          {videoEnded && (
+      ) :<>
+      <ReactPlayer width='100%' height='100%' ref={videoPlayerRef} url={videoData?.videoUrl} playing={true} controls={true} onEnded={()=>setVideoEnded(true)} />
+      {videoEnded && (
             <div
               style={{
                 backgroundImage:
@@ -160,7 +154,7 @@ export default function VideoDetails() {
                 onClick={() => {
                   if (videoPlayerRef?.current) {
                     // set the current time of the video to 0
-                    videoPlayerRef?.current?.seek(0);
+                    videoPlayerRef?.current?.seekTo(0);
                     setVideoEnded(false);
                   }
                 }}
@@ -189,8 +183,8 @@ export default function VideoDetails() {
               </div>
             </div>
           )}
-        </Player>
-      )}
+      </>
+      }
     </div>
   );
 }

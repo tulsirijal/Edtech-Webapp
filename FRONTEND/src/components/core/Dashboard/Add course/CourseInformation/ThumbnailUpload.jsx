@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import {FiUploadCloud} from 'react-icons/fi';
 import 'video-react/dist/video-react.css';
 import { Player } from 'video-react'
+import ReactPlayer from 'react-player'
 export default function ThumbnailUpload({
   name,
   label,
@@ -63,7 +64,7 @@ export default function ThumbnailUpload({
                 className="h-full w-full rounded-md object-cover"
               />
             ) : (
-              <Player aspectRatio="16:9" playsInline src={previewFile} />
+              <ReactPlayer width='100%' playing={true} controls={true} url={previewFile} />
             )}
             {!viewData && (
               <button
