@@ -200,7 +200,19 @@ export const addRatingAndReview = async(data,token)=>{
       toast.success("Added a review");
     }
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
     toast.error(error.response.data.message);
   }
+}
+
+export const getAllReviews = async()=>{
+  let result = null;
+  try {
+    const response = await apiConnector("GET",courseEndPoints.GET_REVIEWS);
+    console.log(response.data.data)
+    result = response?.data?.data
+  } catch (error) {
+    console.log(error.message)
+  }
+  return result
 }

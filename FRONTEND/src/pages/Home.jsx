@@ -10,6 +10,7 @@ import LearnLanguage from "../components/core/homePage/learnLanguage";
 import InstructionSection from "../components/core/homePage/InstructionSection";
 import ExploreCourses from "../components/core/homePage/ExploreCourses";
 import Footer from "../components/core/homePage/Footer";
+import ReviewSlider from "../components/common/ReviewSlider";
 export default function Home() {
   return (
     <div>
@@ -145,6 +146,7 @@ export default function Home() {
       <div className="w-11/12 max-w-maxContent mx-auto flex flex-col justify-between bg-richblack-900 text-white">
           <InstructionSection/>
           <h2 className="font-semibold text-4xl text-center">Reviews from other learners</h2>
+          <ReviewSlider/>
           {/* reviews slider */}
       </div>
       {/* section -4 footer */}
