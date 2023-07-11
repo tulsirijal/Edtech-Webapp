@@ -110,19 +110,30 @@ function App() {
             </PrivateRoute>
           }
         >
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route
+                path="/dashboard/enrolled-courses"
+                element={<EnrolledCourses />}
+              />
+              <Route
+                path="/dashboard/purchase-history"
+                element={<CartItems />}
+              />
+            </>
+          )}
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              <Route path="/dashboard/add-course" element={<AddCourse />} />
+              <Route path="/dashboard/my-courses" element={<MyCourses />} />
+              <Route
+                path="/dashboard/edit-course/:courseId"
+                element={<EditCourse />}
+              />
+            </>
+          )}
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
-          <Route
-            path="/dashboard/enrolled-courses"
-            element={<EnrolledCourses />}
-          />
-          <Route path="/dashboard/purchase-history" element={<CartItems />} />
           <Route path="/dashboard/settings" element={<Settings />} />
-          <Route path="/dashboard/add-course" element={<AddCourse />} />
-          <Route path="/dashboard/my-courses" element={<MyCourses />} />
-          <Route
-            path="/dashboard/edit-course/:courseId"
-            element={<EditCourse />}
-          />
         </Route>
         <Route
           element={
@@ -138,7 +149,7 @@ function App() {
             />
           )}
         </Route>
-        <Route path="*" element={<ErrorPage/>}/>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
