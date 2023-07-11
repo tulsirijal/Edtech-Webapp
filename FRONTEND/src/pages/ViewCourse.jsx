@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
 import { getFullCourseDetails } from '../services/operations/courseDetailsApi';
 import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTotalNoOfLectures } from '../slices/viewCourseSlice';
-import VideoSidebar from '../components/core/Dashboard/ViewCourse/VIdeoSidebar';
+import VideoSidebar from '../components/core/Dashboard/ViewCourse/VideoSidebar';
 import ReviewModal from '../components/core/Dashboard/ViewCourse/ReviewModal';
 
 export default function ViewCourse() {
@@ -27,9 +27,9 @@ export default function ViewCourse() {
         courseSpecificDetails();
     },[])
   return (
-    <div className='flex '>
+    <div className='flex flex-col md:flex-row '>
         <VideoSidebar setReviewModal={setReviewModal} />
-        <div>
+        <div className='flex-1'>
             <Outlet/>
         </div>
         {reviewModal && <ReviewModal setReviewModal={setReviewModal} />}

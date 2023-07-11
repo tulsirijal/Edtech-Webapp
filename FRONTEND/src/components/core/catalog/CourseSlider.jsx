@@ -25,7 +25,7 @@ export default function CourseSlider({ courses }) {
             })}
         </Swiper>
       ) : (
-        <p>No courses found</p>
+        <p className="text-richblack-5 text-2xl text-center">No courses found</p>
       )}
     </div>
   );

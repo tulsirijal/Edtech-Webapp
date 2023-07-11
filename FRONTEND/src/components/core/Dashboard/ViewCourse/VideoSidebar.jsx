@@ -31,7 +31,7 @@ export default function VideoSidebar({ setReviewModal }) {
         courseSectionData[currentSectionIndex]?.subSection[
           currentSubsectionIndex
         ]?._id;
-      setActiveSection(courseSectionData[currentSectionIndex]._id);
+      setActiveSection(courseSectionData[currentSectionIndex]?._id);
       setActiveVideoBar(activeSubSectionId);
     }
     setActiveFlags();
@@ -41,7 +41,7 @@ export default function VideoSidebar({ setReviewModal }) {
   }
   function handleAddReview() {}
   return (
-    <div className="h-[calc(100vh-3rem)] w-11/12 max-w-[250px] bg-richblack-800">
+    <div className="md:h-[calc(100vh-3rem)] mx-auto md:mx-0 mt-10 w-full md:mt-0 mb-10 md:mb-0 md:max-w-[250px] bg-richblack-800">
       <div className="flex items-center justify-between px-2 py-2">
         <div
           className=""

@@ -4,9 +4,9 @@ import RatingStars from "../../common/RatingStars";
 export default function CourseCard({ course }) {
   return (
     <Link to={`/courses/${course._id}`}>
-      <div className="flex flex-col gap-1">
-        <img src={course?.thumbnail} className='h-[250px] w-[350px]' /> 
-        <p className="text-richblack-5 text-2xl">{course?.name}</p>
+      <div className="flex flex-col gap-1 ">
+        <img src={course?.thumbnail} className='h-[250px] w-[350px] rounded-md' /> 
+        <p className="text-richblack-5 text-xl mt-2">{course?.name}</p>
         <p className="text-richblack-100">
           Course created by{" "}
           <span className="text-yellow-25">
@@ -18,7 +18,7 @@ export default function CourseCard({ course }) {
             <RatingStars />
             <p className="text-richblack-300">{course?.ratingAndReviews?.length} Reviews</p>
         </div>
-        <p className="text-richblack-5">${course.price}</p>
+        <p className="text-richblack-5 text-xl">${course.price}</p>
       </div>
     </Link>
   );
