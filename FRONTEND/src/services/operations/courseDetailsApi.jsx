@@ -62,7 +62,27 @@ export const createSection = async(formData,token)=>{
   toast.dismiss(toastId);
   return result;
 }
-
+export async function getCourseDetails(courseId){
+  let toastId;
+  toastId = toast.loading("Loading");
+  let result = null;
+  try {
+    const response = await apiConnector(
+      "POST",
+      courseEndPoints.GET_COURSE_DETAILS,
+      { courseId: courseId }
+    );
+    console.log(response.data.data.courseDetails);
+    // setCourseDetails(response.data.data.courseDetails);
+    result = response.data.data.courseDetails
+    toast.dismiss(toastId);
+  } catch (error) {
+    console.log(error);
+    toast.dismiss(toastId);
+  }
+  toast.dismiss(toastId)
+  return result
+}
 export const updateSection = async(formData,token)=>{
   const toastId = toast.loading("Loading");
   let result=null;
