@@ -28,6 +28,7 @@ import ViewCourse from "./pages/ViewCourse";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
 import ErrorPage from "./pages/Error";
+import Instructor from "./components/core/Dashboard/instructorDashboard/instructor";
 function App() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -130,6 +131,7 @@ function App() {
                 path="/dashboard/edit-course/:courseId"
                 element={<EditCourse />}
               />
+              <Route path="/dashboard/instructor" element={<Instructor/>}/>
             </>
           )}
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
