@@ -8,6 +8,7 @@ import {MdDelete} from 'react-icons/md'
 import { deleteCourse } from "../../../../services/operations/courseDetailsApi";
 import ConfirmationModal from "../../../common/ConfirmationModal";
 import { useNavigate } from "react-router-dom";
+import formatDate from "../../../../utils/dateFormatter";
 export default function CourseTable({ courses, setCourses }) {
   const navigate = useNavigate(); 
   const dispatch = useDispatch();
@@ -21,10 +22,10 @@ export default function CourseTable({ courses, setCourses }) {
   const TRUNCATE_LENGTH = 30;
   return (
     <div>
-      <Table>
+      <Table className="rounded-xl border border-richblack-800">
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className=" hidden md:flex flex-1 text-left text-sm font-medium uppercase text-richblack-100">
               Courses
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
@@ -42,13 +43,13 @@ export default function CourseTable({ courses, setCourses }) {
         <Tbody>
           {courses?.length === 0 ? (
             <Tr>
-              <Td>No courses found</Td>
+              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">No courses found</Td>
             </Tr>
           ) : (
             courses.map((course) => {
               return (
-                <Tr key={course._id} className='flex gap-x-10 border-b border-richblack-800 px-6 py-8 justify-between'>
-                  <Td className="flex gap-3 ">
+                <Tr key={course._id} className='flex gap-x-14   border-b border-richblack-800 md:px-6 md:py-8 '>
+                  <Td className="flex flex-1  md:gap-x-4 ">
                     <img
                       src={course.thumbnail}
                       className="h-[148px] w-[220px] rounded-lg object-cover"
@@ -66,7 +67,7 @@ export default function CourseTable({ courses, setCourses }) {
                               .join(" ") + "..."
                           : course?.description} 
                       </p>
-                      <p className="text-richblack-5">Created: {course?.createdAt} </p>
+                      <p className="text-richblack-5">Created: {formatDate(course?.createdAt)} </p>
                       {course?.status === COURSE_STATUS.DRAFT ? (
                         <p className="text-pink-50">Draft</p>
                       ) : (
@@ -74,28 +75,29 @@ export default function CourseTable({ courses, setCourses }) {
                       )}
                     </div>
                   </Td>
-                  <Td className='text-richblack-5'>
-                    2hr 30min
-                  </Td>
-                  <Td className='text-richblack-5'>
-                    {course?.price}
-                  </Td>
-                  <Td className='text-richblack-300 '>
-                    <button onClick={()=>navigate(`/dashboard/edit-course/${course._id}`)}>
-                        <BiEdit/>
-                    </button>
-                    <button onClick={()=>setConfirmationModal({
-                        text1:"Are you sure ? ",
-                        text2:"The content of the course will be deleted",
-                        btn1Text:"Delete",
-                        btn2Text:"Cancle",
-                        btn1Handler:()=>handleDelete(course._id),
-                        btn2Handler:()=>setConfirmationModal(null),
-                         
-                    })}>
-                        <MdDelete/>
-                    </button>
-                  </Td>
+                    <Td className='text-richblack-5'>
+                      2hr 30min
+                    </Td>
+                    <Td className='text-richblack-5'>
+                      {course?.price}
+                    </Td>
+                    <Td className='text-richblack-300 md:space-x-4'>
+                      <button onClick={()=>navigate(`/dashboard/edit-course/${course._id}`)}>
+                          <BiEdit/>
+                      </button>
+                      <button onClick={()=>setConfirmationModal({
+                          text1:"Are you sure ? ",
+                          text2:"The content of the course will be deleted",
+                          btn1Text:"Delete",
+                          btn2Text:"Cancle",
+                          btn1Handler:()=>handleDelete(course._id),
+                          btn2Handler:()=>setConfirmationModal(null),
+                    
+                      })}>
+                          <MdDelete/>
+                      </button>
+                    </Td>
+                  
                 </Tr>
               );
             })
