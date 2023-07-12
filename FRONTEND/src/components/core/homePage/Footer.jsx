@@ -5,6 +5,7 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
 import CompanyLogo from "../../../assets/Logo/Logo-full-light.png";
+import {Link} from 'react-router-dom'
 export default function Footer() {
   const date = new Date();
   const foooterDate= date.getFullYear()
@@ -103,8 +104,12 @@ export default function Footer() {
       <div className="border-t-[1px] border-richblack-300 w-11/12 max-w-maxContent mx-auto mt-5 py-5">
         <div className="flex flex-col md:flex-row md:justify-between items-center">
             <div className="flex gap-2 py-4 lg:py-8">
-              <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Privacy Policy</p>
-              <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Cookie Policy</p>
+              <Link to='/about'>
+                <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">About us</p>
+              </Link>
+              <Link to='/contact-us'>
+                <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Contact us</p>
+              </Link>
               <p className="text-[14px] hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Terms</p>
             </div>
             <div className=" hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">
