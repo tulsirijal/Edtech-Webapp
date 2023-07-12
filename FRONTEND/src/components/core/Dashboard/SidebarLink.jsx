@@ -15,7 +15,7 @@ export default function SidebarLink({ link }) {
           matchRoute(link.path)
             ? "bg-yellow-800 text-yellow-50"
             : "bg-transparent"
-        } relative text-sm py-2 px-8  flex items-center gap-x-2`}
+        } relative text-sm py-2 px-2 md:px-8  flex items-center gap-x-2`}
       >
         <span
           className={`absolute left-0 top-0 h-full w-[0.25rem] bg-yellow-50 ${
