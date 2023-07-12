@@ -130,6 +130,6 @@ exports.webhook = async (request, response) => {
       // console.log(error);
     }
 
-    response.json({ received: true });
+    response.status(200).end();
   }
 };
