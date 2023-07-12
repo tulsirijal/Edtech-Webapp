@@ -52,17 +52,17 @@ export default function ReviewSlider() {
                     />
                     <div>
                       <p className="font-semibold text-[16px]">
-                        {review?.user.firstName}
+                        {review?.user?.firstName}
                       </p>
                       <p className="text-richblack-300 text-sm">
-                        {review?.course.name}
+                        {review?.course?.name}
                       </p>
                     </div>
                   </div>
                   <p className="text-sm mt-1">{review?.reviews}</p>
                   <div className="flex items-center gap-2">
                     <span className="text-yellow-5">{review.rating}</span>
-                    <ReactStars value={review.rating} edit={false} />
+                    <ReactStars value={review?.rating} edit={false} />
                   </div>
                 </div>
               </SwiperSlide>
