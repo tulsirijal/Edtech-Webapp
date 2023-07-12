@@ -43,7 +43,7 @@ export default function Instructor() {
       <div>
         {courses.length > 0 ? (
           <div>
-            <div className="flex h-[450px] space-x-4">
+            <div className="flex flex-col md:flex-row gap-4 min-h-[450px] ">
               {totalAmount > 0 || totalStudents > 0 ? (
                 <InstructorCharts courses={instructorData} />
               ) : (
@@ -94,12 +94,12 @@ export default function Instructor() {
                   <span className="text-yellow-25 text-sm">View all</span>
                 </Link>
               </div>
-              <div className="flex gap-4 items-center">
+              <div className="flex flex-col md:flex-row gap-4 items-center">
                 {courses.slice(0, 3).map((course) => {
                   return (
-                    <div key={course._id}>
+                    <div key={course._id} className="">
                       <img
-                        className="w-[250px] object-cover"
+                        className="w-full md:max-w-[250px] min-h-[150px] object-cover mb-2"
                         src={course?.thumbnail}
                       />
                       <div className="w-full">
