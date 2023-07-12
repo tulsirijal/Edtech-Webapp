@@ -28,7 +28,7 @@ import ViewCourse from "./pages/ViewCourse";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
 import ErrorPage from "./pages/Error";
-import Instructor from "./components/core/Dashboard/instructorDashboard/instructor";
+import Instructor from "./components/core/Dashboard/instructorDashboard/Instructor";
 import Contact from "./pages/Contact";
 function App() {
   const { token } = useSelector((state) => state.auth);
