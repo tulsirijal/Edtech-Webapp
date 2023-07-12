@@ -107,7 +107,7 @@ export default function Footer() {
               <Link to='/about'>
                 <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">About us</p>
               </Link>
-              <Link to='/contact-us'>
+              <Link to='/contact'>
                 <p className="text-[14px] border-r-[1px] pr-2 hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Contact us</p>
               </Link>
               <p className="text-[14px] hover:text-richblack-5 transition-all duration-200 cursor-pointer text-richblack-300">Terms</p>

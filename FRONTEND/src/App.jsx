@@ -29,6 +29,7 @@ import { ACCOUNT_TYPE } from "./utils/constants";
 import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
 import ErrorPage from "./pages/Error";
 import Instructor from "./components/core/Dashboard/instructorDashboard/instructor";
+import Contact from "./pages/Contact";
 function App() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -104,6 +105,7 @@ function App() {
           }
         />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           element={
             <PrivateRoute>
