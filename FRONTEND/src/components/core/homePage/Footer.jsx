@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
-import CompanyLogo from "../../../assets/Logo/Logo-full-light.png";
+import CompanyLogo from "../../../assets/Logo/Logo-Full-Light.png";
 import {Link} from 'react-router-dom'
 export default function Footer() {
   const date = new Date();
