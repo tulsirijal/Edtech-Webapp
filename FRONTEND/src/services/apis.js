@@ -24,7 +24,8 @@ export const userDetails = {
     UPDATE_PROFILE_PICTURE:BASE_URL + '/profile/updateDisplayPicture',
     GET_USER_DETAILS: BASE_URL + '/profile/getUserDetails',
     UPDATE_ADDITIONAL_INFO: BASE_URL + '/profile/updateProfile',
-    DELETE_ACCOUNT:BASE_URL + '/profile/deleteAccount'
+    DELETE_ACCOUNT:BASE_URL + '/profile/deleteAccount',
+    GET_INSTRUCTOR_DATA:BASE_URL + '/profile/getInstructorData'
 }
 export const courseEndPoints = {
     GET_CATEGORY:BASE_URL + '/course/showAllCategories',
