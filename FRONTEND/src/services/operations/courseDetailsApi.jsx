@@ -189,7 +189,7 @@ export const getInstructorCourses = async(token)=>{
     const response = await apiConnector('GET', courseEndPoints.GET_INSTRUCTOR_COURSE,null,{
       Authorization:`Bearer ${token}`
     })
-    console.log(response.data.data);
+    // console.log(response.data.data);
     result = response.data.data
   } catch (error) {
     console.log(error)
@@ -229,7 +229,7 @@ export const getAllReviews = async()=>{
   let result = null;
   try {
     const response = await apiConnector("GET",courseEndPoints.GET_REVIEWS);
-    console.log(response.data.data)
+    // console.log(response.data.data)
     result = response?.data?.data
   } catch (error) {
     console.log(error.message)

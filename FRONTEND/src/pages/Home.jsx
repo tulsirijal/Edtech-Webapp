@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import HighlightText from "../components/core/homePage/HighlightText";
@@ -11,7 +11,18 @@ import InstructionSection from "../components/core/homePage/InstructionSection";
 import ExploreCourses from "../components/core/homePage/ExploreCourses";
 import Footer from "../components/core/homePage/Footer";
 import ReviewSlider from "../components/common/ReviewSlider";
+import { IoIosArrowDropdown } from "react-icons/io";
+import { apiConnector } from "../services/apiConnector";
+import { categories } from "../services/apis";
 export default function Home() {
+  const [subLinks, setSubLinks] = useState([]);
+  async function fetchSubLinks() {
+    const result = await apiConnector("GET", categories.CATEGORIES_API);
+    setSubLinks(result.data.data);
+  }
+  useEffect(() => {
+    fetchSubLinks();
+  }, []);
   return (
     <div>
       {/* section -1 */}
@@ -24,8 +35,10 @@ export default function Home() {
             </button>
           </div>
         </Link>
-        <div className="text-center text-4xl font-semibold mt-7  ">
-          Empower Your Future with <HighlightText text={"Coding Skills"} />
+        <div className="">
+          <p className="text-center text-2xl md:text-4xl font-semibold mt-7 mb-4 ">
+            Empower Your Future with <HighlightText text={"Coding Skills"} />
+          </p>
         </div>
         <p className="w-[90%]   mt-4 text-center text-lg font-bold text-richblack-300 ">
           With our online coding courses, you can learn at your own pace, from
@@ -37,13 +50,48 @@ export default function Home() {
           <CTAbutton active={true} linkto={"/signup"}>
             Learn more
           </CTAbutton>
-          <CTAbutton active={false} linkto={"/login"}>
-            Book a demo
-          </CTAbutton>
+          <div className="relative flex items-center gap-2 group">
+            <div className="flex items-center  bg-richblack-800 gap-2 text-center text-[16px] py-2 px-4 
+                            md:py-3 md:px-6 rounded-md hover:scale-95 transition-all duration-200 ">
+              <p className="text-richblack-25 text-center mx-auto text-lg">
+                Categories
+              </p>
+              <IoIosArrowDropdown />
+            </div>
+
+            <div
+              className="invisible absolute left-[50%] z-[10]
+                         translate-x-[-50%] translate-y-[70%]
+                         flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
+                         opacity-0 transition-all duration-200 group-hover:visible
+                         group-hover:opacity-100 lg:w-[300px]"
+            >
+              <div
+                className="absolute left-[50%] top-0
+                                translate-x-[80%]
+                                translate-y-[-45%] h-6 w-6 rotate-45 rounded bg-richblack-5"
+              ></div>
+
+              {subLinks.length ? (
+                subLinks.map((subLink, index) => (
+                  <Link
+                    className="hover:bg-richblack-50 py-2 px-4 rounded-md"
+                    to={`/catalog/${subLink.name
+                      .split(" ")
+                      .join("-")
+                      .toLowerCase()}`}
+                    key={index}
+                  >
+                    <p>{subLink.name}</p>
+                  </Link>
+                ))
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </div>
         </div>
-        <div
-          className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200"
-        >
+        <div className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
           <video loop muted autoPlay>
             <source src={Banner} type="video/mp4" />
           </video>
@@ -99,7 +147,7 @@ export default function Home() {
             backgroundGradient={"codeblock2"}
           />
         </div>
-       <ExploreCourses/>
+        <ExploreCourses />
       </div>
       {/* section 2 */}
       <div className="bg-pure-greys-5 text-richblack-700">
@@ -138,19 +186,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <TimelineSection/>
-          <LearnLanguage/>
+          <TimelineSection />
+          <LearnLanguage />
         </div>
       </div>
       {/* section -3 */}
       <div className="w-11/12 max-w-maxContent mx-auto flex flex-col justify-between bg-richblack-900 text-white">
-          <InstructionSection/>
-          <h2 className="font-semibold text-4xl text-center">Reviews from other learners</h2>
-          <ReviewSlider/>
-          {/* reviews slider */}
+        <InstructionSection />
+        <h2 className="font-semibold text-4xl text-center">
+          Reviews from other learners
+        </h2>
+        <ReviewSlider />
+        {/* reviews slider */}
       </div>
       {/* section -4 footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

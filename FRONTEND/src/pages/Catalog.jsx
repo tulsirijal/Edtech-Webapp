@@ -12,8 +12,10 @@ export default function Catalog() {
   const [catalogPageData, setCatalogPageData] = useState(null);
   const [categoryId, setCategoryId] = useState("");
   const [selectedTab, setSelectTab] = useState("most-popular");
+  const [loading, setLoading] = useState(false);
   async function getAllCategories() {
     try {
+      setLoading(true);
       const response = await apiConnector("GET", categories.CATEGORIES_API);
       console.log(response.data.data);
       const categoryId = response?.data?.data?.filter(
@@ -21,19 +23,24 @@ export default function Catalog() {
           category.name.split(" ").join("-").toLowerCase() === catalogName
       )[0]._id;
       setCategoryId(categoryId);
-      console.log(categoryId);
+      // console.log(categoryId);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setLoading(false);
     }
   }
   async function getCategoryDetails() {
     try {
+      setLoading(true);
       const response = await getCatalogData(categoryId);
       if (response) {
         setCatalogPageData(response);
       }
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setLoading(false);
     }
   }
   useEffect(() => {
@@ -48,14 +55,20 @@ export default function Catalog() {
     <div>
       <div className="">
         <div className="bg-richblack-800">
-          <div className="w-11/12 max-w-maxContent mx-auto min-h-[250px] flex flex-col gap-2 justify-center ">
-            <p className="text-richblack-300 text-sm">
-              {`Home / Catalog /`}{" "}
-              <span className="text-yellow-50">{` ${catalogPageData?.selectedCategory?.name}`}</span>
-            </p>
-            <p className="text-richblack-5 text-3xl">{` ${catalogPageData?.selectedCategory?.name}`}</p>
-            <p className="text-richblack-300 font-medium">{`${catalogPageData?.selectedCategory?.description}`}</p>
-          </div>
+          {loading ? (
+            <div className="text-richblack-300 w-11/12 max-w-maxContent mx-auto min-h-[250px] flex flex-col gap-2 justify-center">
+              Loading...
+            </div>
+          ) : (
+            <div className="w-11/12 max-w-maxContent mx-auto min-h-[250px] flex flex-col gap-2 justify-center ">
+              <p className="text-richblack-300 text-sm">
+                {`Home / Catalog /`}{" "}
+                <span className="text-yellow-50">{` ${catalogPageData?.selectedCategory?.name}`}</span>
+              </p>
+              <p className="text-richblack-5 text-3xl">{` ${catalogPageData?.selectedCategory?.name}`}</p>
+              <p className="text-richblack-300 font-medium">{`${catalogPageData?.selectedCategory?.description}`}</p>
+            </div>
+          )}
         </div>
         <div className="w-11/12 max-w-maxContent mx-auto ">
           {/* section 1 */}

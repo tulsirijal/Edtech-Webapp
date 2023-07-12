@@ -25,7 +25,6 @@ export default function ExploreCourses() {
   function handleCurrentCard(index) {
     setCurrentCard(courses[index].heading);
   }
-  console.log(currentCard);
 
   return (
     <div>
