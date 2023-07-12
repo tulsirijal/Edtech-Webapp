@@ -6,7 +6,7 @@ import CTAbutton from "../components/core/homePage/CTAbutton";
 import Banner from "../assets/Images/banner.mp4";
 import CodeBlocks from "../components/core/homePage/CodeBlocks";
 import TimelineSection from "../components/core/homePage/TimelineSection";
-import LearnLanguage from "../components/core/homePage/learnLanguage";
+import LearnLanguage from "../components/core/homePage/LearnLanguage";
 import InstructionSection from "../components/core/homePage/InstructionSection";
 import ExploreCourses from "../components/core/homePage/ExploreCourses";
 import Footer from "../components/core/homePage/Footer";
