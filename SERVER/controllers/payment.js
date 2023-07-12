@@ -57,8 +57,8 @@ exports.stripePayment = async (req, res) => {
       customer: customer.id,
       line_items: line_items,
       mode: "payment",
-      success_url: "http://localhost:5173/dashboard/enrolled-courses",
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: "https://learnprogramming-lilac.vercel.app/dashboard/enrolled-courses",
+      cancel_url: "https://learnprogramming-lilac.vercel.app/cancel",
     });
     res.status(200).json({
       success: true,
