@@ -15,7 +15,7 @@ const {
   showAllCategories,
   createCategory,
   categoryPageDetails,
-} = require("../controllers/Category");
+} = require("../controllers/category");
 // importing section controllers
 const {
   createSection,
