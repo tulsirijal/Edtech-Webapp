@@ -10,7 +10,7 @@ import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/settings/Settings";
 import AboutPage from "./pages/AboutPage";
 import Dashboard from "./pages/Dashboard";
-import ForgotPassword from "./pages/forgotPassword";
+import ForgotPassword from './pages/ForgotPassword'
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
