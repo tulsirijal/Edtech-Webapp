@@ -130,12 +130,12 @@ export default function CourseDetails() {
             $ {courseDetails?.price}
           </p>
           <div className="flex flex-col gap-3 ">
-            {courseDetails?.studentEnrolled?.includes(user._id) ? (
+            {courseDetails?.studentEnrolled?.includes(user?._id) ? (
               <IconBtn text={"Go to Course"} onClick={handleGoToCourse} />
             ) : (
               <IconBtn text="Buy now" onClick={handleBuyNow} />
             )}
-            {!courseDetails?.studentEnrolled?.includes(user._id) && (
+            {!courseDetails?.studentEnrolled?.includes(user?._id) && (
               <button
                 onClick={handleAddToCart}
                 className="bg-richblack-700 md:bg-richblack-800 text-richblack-300 px-4 py-2 rounded-md"
