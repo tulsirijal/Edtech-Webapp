@@ -86,7 +86,7 @@ export default function Home() {
                   </Link>
                 ))
               ) : (
-                <div></div>
+                <span className="loader"></span>
               )}
             </div>
           </div>
