@@ -4,8 +4,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   define: {
-    'global': 'globalThis',
+ 
+    'global': 'window',
     'process.env': {},
+  },
+  resolve: {
+    alias: {
+
+      'global': 'window',
+    },
   },
   build: {
     sourcemap: true,
