@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import IconBtn from "../../common/IconBtn";
-import {LuEdit} from 'react-icons/lu'
+
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function MyProfile() {
                 navigate("/dashboard/settings");
               }}
             >
-              <LuEdit/>
+
             </IconBtn>
         </div>
         <div className="bg-richblack-800 border-[1px] border-richblack-700 px-6 py-4 rounded-md min-h-[150px] flex flex-col">
@@ -39,7 +39,7 @@ export default function MyProfile() {
               text={"Edit"}
               onClick={() => navigate("/dashboard/settings")}
             >
-              <LuEdit/>
+
             </IconBtn>
           </div>
           <div className="">
@@ -56,7 +56,6 @@ export default function MyProfile() {
             <div className="text-richblack-5 flex items-center justify-between">
                 <p className="font-semibold text-2xl">Personal Details</p>
                 <IconBtn text={"Edit"} onClick={()=>navigate('/dashboard/settings')}>
-                  <LuEdit/>
                 </IconBtn>
             </div>
             <div className=" flex items-center justify-between text-richblack-5">
