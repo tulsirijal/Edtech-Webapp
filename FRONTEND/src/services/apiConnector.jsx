@@ -1,4 +1,4 @@
-import axios from "axios/dist/browser/axios.cjs";
+import axios from "axios";
 
 // Force the adapter to XHR to bypass the Fetch detection logic
 axios.defaults.adapter = 'xhr';
